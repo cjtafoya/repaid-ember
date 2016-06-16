@@ -1,3 +1,22 @@
-GatheringsHBS
-<hr>
+<div class='page-header'>
+  <span class='pull-right clearfix'>{{link-to "+ New Gathering" 'gatherings.new'}}</span>
+  <h4>My Gatherings</h4>
+</div>
+
+<div>
+  {{#each model as |g|}}
+    <div>
+    <h3><small></small>{{#link-to 'gatherings.gathering' g}}{{g.name}}{{/link-to}}</h3>
+    <h4>{{g.tagline}}</h4>
+    <h4><small>Attendees: </small></h4>
+      <ul>
+        {{#each g.attendees as |att|}}
+        <li>{{att.name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <hr>
+  {{/each}}
+</div>
+
 {{outlet}}
