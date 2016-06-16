@@ -1,0 +1,6 @@
+{{outlet}}
+<label for="name">Name: </label>
+{{input value=model.name id="name"}}<br>
+<label for="tagline">Tagline: </label>
+{{input value=model.tagline id="tagline"}}<br>
+<button {{action 'save' model}} id="save-gathering">Save</button>
