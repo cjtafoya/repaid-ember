@@ -1,4 +1,4 @@
-GatheringsHBS
+GatheringsHBS {{link-to "New Gathering" 'gatherings.new'}}
 <ul>
 {{#each model as |g|}}
   <li>Name: {{#link-to 'gatherings.gathering' g}}{{g.name}}{{/link-to}}</li>
@@ -10,6 +10,7 @@ GatheringsHBS
       {{/each}}
     </ul>
   </li>
+  <br><br>
 {{/each}}
 </ul>
 <hr>
