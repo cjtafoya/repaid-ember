@@ -1,17 +1,3 @@
-GatheringsHBS {{link-to "New Gathering" 'gatherings.new'}}
-<ul>
-{{#each model as |g|}}
-  <li>Name: {{#link-to 'gatherings.gathering' g}}{{g.name}}{{/link-to}}</li>
-  <li>Tagline: {{g.tagline}}</li>
-  <li>Attendees:
-    <ul>
-      {{#each g.attendees as |att|}}
-      <li>{{att.name}}</li>
-      {{/each}}
-    </ul>
-  </li>
-  <br><br>
-{{/each}}
-</ul>
+GatheringsHBS
 <hr>
 {{outlet}}
