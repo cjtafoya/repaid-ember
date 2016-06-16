@@ -1,9 +1,8 @@
 // run '$ember install active-model-adapter'
 
-import ActiveModelAdapter from 'active-model-adapter';
- 
-export default ActiveModelAdapter.extend({
-  host: 'http://localhost:3000/',
-  namespace: 'api/vi'
-})
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
 
+export default JSONAPIAdapter.extend({
+  host: 'http://localhost:3000',
+  namespace: 'api/v1'
+})
