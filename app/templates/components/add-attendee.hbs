@@ -1,0 +1,14 @@
+{{yield}}
+{{#if addNewAttendee}}
+
+  <label for="name">Attendee Name: </label>
+  {{input value=attendee.name id='name'}}
+  <label for="gathering-id">Gathering Id: </label>
+  {{#input value=attendee.gathering_id id='gathering_id' }}{{/input}}
+  <button {{action 'save' attendee}}>Save</button>
+
+{{else}}
+
+  <button {{action 'add'}}>Add New Attendee</button>
+
+{{/if}}
