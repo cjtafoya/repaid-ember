@@ -6,7 +6,7 @@ export default Model.extend({
   name: attr('string'), 
   description: attr('string'), 
   amount: attr('number'), 
-  event: belongsTo('event'),
+  gathering: belongsTo('gathering'),
   group: belongsTo('group'),
   attendee: belongsTo('attendee')
 });
