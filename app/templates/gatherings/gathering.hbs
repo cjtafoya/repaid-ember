@@ -1,0 +1,15 @@
+{{outlet}}
+Gathering
+<ul>
+  <li>Name: {{model.name}}</li>
+  <li>Tagline: {{model.tagline}}</li>
+  <li>Attendees:
+    <ul>
+      {{#each model.attendees as |att|}}
+      <li>{{att.name}}</li>
+      {{/each}}
+    </ul>
+  </li>
+</ul>
+<hr>
+{{outlet}}
