@@ -4,7 +4,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr('string'),
-  event: belongsTo('event'),
+  gathering: belongsTo('gathering'),
   group: belongsTo('group'),
   attendees: hasMany('attendees'),
   expenses: hasMany('expenses')
