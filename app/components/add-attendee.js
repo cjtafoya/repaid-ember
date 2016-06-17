@@ -7,8 +7,11 @@ export default Ember.Component.extend({
       this.toggleProperty('addNewAttendee')
     },
     saveAttendee: function(){
-      this.attrs.triggerSaveAttendee(this.getProperties(['name']))
+      this.attrs.triggerSaveAttendee(this.get('cbGroups'))
       this.toggleProperty('addNewAttendee')
+    },
+    updateSelection: function(newSelection, value, operation){
+      this.set('attendee.groups', newSelection)
     }
   }
 });

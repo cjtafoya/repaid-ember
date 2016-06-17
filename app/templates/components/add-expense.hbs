@@ -4,13 +4,13 @@
 
   <label for="name">Expense Name: </label>
   {{input value=expense.name id='expenseName'}}
-  <label for="name">Expense Amount: </label>
+  <label for="amount">Expense Amount: </label>
   {{input value=expense.amount id='expenseAmount'}}
-  <label for="name">Purchaser ID: </label>
-  {{input value=expense.attendee_id id='expenseAttendee'}}
-  <label for="name">Group ID: </label>
-  {{input value=expense.group_id id='expenseGroup'}}
-
+  <br>
+  <label for="group">Expense Group: </label>
+  {{multiselect-checkboxes options=eventGroups onchange=(action 'updateGroup') labelProperty='name'}}
+  <label for="buyer">Buyer: </label>
+  {{multiselect-checkboxes options=eventAttendees onchange=(action 'updateBuyer') labelProperty='name'}}
   <button {{action 'saveExpense'}}>Save</button>
 
 {{else}}
