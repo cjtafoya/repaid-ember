@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
     saveAttendee: function(properties) {
       this.get('attendee').set('gathering', this.get('model'))
       this.get('attendee').save();
+      this.toggleProperty('addNewAttendee')
     },
     saveGroup: function(properties) {
       this.get('group').set('gathering', this.get('model'))
@@ -23,5 +24,11 @@ export default Ember.Controller.extend({
       this.get('expense').set('gathering', this.get('model'))
       this.get('expense').save();
     },
+    addExpense: function(){
+      this.toggleProperty('addNewExpense')
+    },
+    addAttendee: function(){
+      this.toggleProperty('addNewAttendee')
+    }
   }
 });

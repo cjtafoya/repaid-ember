@@ -1,16 +1,13 @@
-{{yield}}
-{{#if addNewAttendee}}
-
-  <label for="name">Attendee Name: </label>
-  {{input value=attendeeName id='attendeeName'}}
+<div class="col-md-12">
+    {{input value=attendeeName id='attendeeName' placeholder="Attendee Name" class="form-control"}}
+  <h5>Select Groups (optional): </h5>
   {{#each eventGroups as |eg|}}
-    <label for="groups">{{eg.name}}</label>
+  <div class="checkbox">
     {{input type="checkbox" id=eg.id}}
+    <label for="groups">{{eg.name}}</label>
+  </div>
   {{/each}}
-  <button {{action 'saveAttendee'}}>Save</button>
-
-{{else}}
-
-  <button {{action 'addAttendee'}}>Add New Attendee</button>
-
-{{/if}}
+  <br>
+  <button {{action 'saveAttendee'}} class="btn btn-info">Add Attendee!</button>
+  <p {{action 'cancelAdd'}}>Cancel</p>
+</div>  

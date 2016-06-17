@@ -1,20 +1,44 @@
-{{yield}}
-{{yield}}
-{{#if addNewExpense}}
+<div class="form-inline">
+  
+  {{input value=expense.name id='expenseName' class="form-control" placeholder="Item Name"}}
 
-  <label for="name">Expense Name: </label>
-  {{input value=expense.name id='expenseName'}}
-  <label for="name">Expense Amount: </label>
-  {{input value=expense.amount id='expenseAmount'}}
-  <label for="name">Purchaser ID: </label>
-  {{input value=expense.attendee_id id='expenseAttendee'}}
-  <label for="name">Group ID: </label>
-  {{input value=expense.group_id id='expenseGroup'}}
+  <div class="input-group">
+    <div class="input-group-addon">$</div>
+    {{input value=expense.amount id='expenseAmount' class="form-control" placeholder="0.00"}}
+  </div>
+  
+  
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendee <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        {{#each attendees as |attendee|}}
+        <li>{{attendee.name}}</li>
+        {{/each}}
+        <li role="separator" class="divider"></li>
+        <li {{action 'addAttendee'}}>+Attendee</li>
+      </ul>
+    </div>
+    {{#if addNewAttendee}}
+    <input type="text" class="form-control" aria-label="...">
+    {{/if}}
+  </div>
 
-  <button {{action 'saveExpense'}}>Save</button>
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Group <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        {{#each groups as |group|}}
+        <li>{{group.name}}</li>
+        {{/each}}
+        <li role="separator" class="divider"></li>
+        <li {{action 'addAttendee'}}>+Group</li>
+      </ul>
+    </div>
+    {{#if addNewGroup}}
+    <input type="text" class="form-control" aria-label="...">
+    {{/if}}
+  </div>
+  <button {{action 'saveExpense'}} class="btn btn-info">Save Expense!</button>
 
-{{else}}
-
-  <button {{action 'addExpense'}}>Add New Expense</button>
-
-{{/if}}
+</div>
