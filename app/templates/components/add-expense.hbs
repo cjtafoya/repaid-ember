@@ -11,13 +11,7 @@
   <div class="input-group">
     <div class="input-group-btn">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendee <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        {{#each attendees as |attendee|}}
-        <li>{{attendee.name}}</li>
-        {{/each}}
-        <li role="separator" class="divider"></li>
-        <li {{action 'addAttendee'}}>+Attendee</li>
-      </ul>
+      {{multiselect-checkboxes options=attendees onchange=(action 'updateBuyer') labelProperty='name' class="dropdown-menu"}}
     </div>
     {{#if addNewAttendee}}
     <input type="text" class="form-control" aria-label="...">
@@ -27,13 +21,7 @@
   <div class="input-group">
     <div class="input-group-btn">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Group <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        {{#each groups as |group|}}
-        <li>{{group.name}}</li>
-        {{/each}}
-        <li role="separator" class="divider"></li>
-        <li {{action 'addAttendee'}}>+Group</li>
-      </ul>
+      {{multiselect-checkboxes options=groups onchange=(action 'updateGroup') labelProperty='name' class="dropdown-menu"}}
     </div>
     {{#if addNewGroup}}
     <input type="text" class="form-control" aria-label="...">
@@ -42,3 +30,8 @@
   <button {{action 'saveExpense'}} class="btn btn-info">Save Expense!</button>
 
 </div>
+
+  <label for="group">Expense Group: </label>
+  
+  <label for="buyer">Buyer: </label>
+  

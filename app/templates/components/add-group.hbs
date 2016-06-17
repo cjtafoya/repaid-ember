@@ -2,11 +2,8 @@
 {{#if addNewGroup}}
 
   <label for="name">Group Name: </label>
-  {{input value=groupName id='groupName'}}
-  {{#each eventAttendees as |ea|}}
-    <label for="attendees">{{ea.name}}</label>
-    {{input type="checkbox" id=ea.id}}
-  {{/each}}
+  {{input value=group.name id='groupName'}}
+  {{multiselect-checkboxes options=eventAttendees onchange=(action 'updateSelection') labelProperty='name'}}
   <button {{action 'saveGroup'}}>Save</button>
 
 {{else}}

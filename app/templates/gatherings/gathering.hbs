@@ -42,6 +42,7 @@
           <div class="col-md-12">
             <div class="well clearfix">
               {{add-expense expense=expense attendees=model.attendees groups=model.groups triggerSaveExpense=(action 'saveExpense')}}
+              {{!-- {{add-expense expense=expense eventAttendees=model.attendees eventGroups=model.groups triggerSaveExpense=(action 'saveExpense')}} --}}
             </div>
           </div>
           {{/if}}
@@ -82,7 +83,7 @@
         <div class="panel-body">
           {{#if addNewAttendee}}
           <div class="well clearfix">
-            {{add-attendee attendeeName=attendee.name eventGroups=model.groups triggerSaveAttendee=(action 'saveAttendee') triggerCancel=(action 'addAttendee')}}
+            {{add-attendee attendee=attendee groups=model.groups triggerSaveAttendee=(action 'saveAttendee') triggerCancel=(action 'addAttendee')}}
           </div>
           {{/if}}
           <div class="list-group">
@@ -125,7 +126,9 @@
   <hr>
 
   <hr>
-  {{add-group groupName=group.name eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup')}}
+
+    {{add-group group=group eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup')}}
+
   <hr>
 
   <hr>
