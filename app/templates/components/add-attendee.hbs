@@ -2,13 +2,15 @@
 {{#if addNewAttendee}}
 
   <label for="name">Attendee Name: </label>
-  {{input value=attendee.name id='name'}}
-  <label for="gathering-id">Gathering Id: </label>
-  {{#input value=attendee.gathering_id id='gathering_id' }}{{/input}}
-  <button {{action 'save' attendee}}>Save</button>
+  {{input value=attendeeName id='attendeeName'}}
+  {{#each eventGroups as |eg|}}
+    <label for="groups">{{eg.name}}</label>
+    {{input type="checkbox" id=eg.id}}
+  {{/each}}
+  <button {{action 'saveAttendee'}}>Save</button>
 
 {{else}}
 
-  <button {{action 'add'}}>Add New Attendee</button>
+  <button {{action 'addAttendee'}}>Add New Attendee</button>
 
 {{/if}}

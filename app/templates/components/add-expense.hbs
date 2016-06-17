@@ -1,0 +1,20 @@
+{{yield}}
+{{yield}}
+{{#if addNewExpense}}
+
+  <label for="name">Expense Name: </label>
+  {{input value=expense.name id='expenseName'}}
+  <label for="name">Expense Amount: </label>
+  {{input value=expense.amount id='expenseAmount'}}
+  <label for="name">Purchaser ID: </label>
+  {{input value=expense.attendee_id id='expenseAttendee'}}
+  <label for="name">Group ID: </label>
+  {{input value=expense.group_id id='expenseGroup'}}
+
+  <button {{action 'saveExpense'}}>Save</button>
+
+{{else}}
+
+  <button {{action 'addExpense'}}>Add New Expense</button>
+
+{{/if}}

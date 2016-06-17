@@ -1,0 +1,16 @@
+{{yield}}
+{{#if addNewGroup}}
+
+  <label for="name">Group Name: </label>
+  {{input value=groupName id='groupName'}}
+  {{#each eventAttendees as |ea|}}
+    <label for="attendees">{{ea.name}}</label>
+    {{input type="checkbox" id=ea.id}}
+  {{/each}}
+  <button {{action 'saveGroup'}}>Save</button>
+
+{{else}}
+
+  <button {{action 'addGroup'}}>Add New Group</button>
+
+{{/if}}

@@ -6,13 +6,55 @@ Gathering
   <li>Attendees:
     <ul>
       {{#each model.attendees as |att|}}
-      <li>{{att.name}}</li>
+      <li>{{att.name}}({{att.id}})</li>
+      {{#if att.expenses}}
+        <ul>
+          <li>Expenses: </li>
+          <ul>
+            {{#each att.expenses as |exp|}}
+            <li>{{exp.name}} - ${{exp.amount}}</li>
+            {{/each}}
+          </ul>
+        </ul>
+      {{/if}}
       {{/each}}
     </ul>
   </li>
+  <li>Groups:
+    <ul>
+      {{#each model.groups as |grp|}}
+      <li>{{grp.name}}({{grp.id}})</li>
+      {{#if grp.attendees}}
+        <ul>
+          <li>Group Members: </li>
+          <ul>
+            {{#each grp.attendees as |grpatt|}}
+            <li>{{grpatt.name}}({{grpatt.id}})</li>
+            {{/each}}
+          </ul>
+        </ul>
+      {{/if}}
+      {{#if grp.expenses}}
+        <ul>
+          <li>Expenses: </li>
+          <ul>
+            {{#each grp.expenses as |exp|}}
+            <li>{{exp.name}} - ${{exp.amount}}</li>
+            {{/each}}
+          </ul>
+        </ul>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </li>
+
 </ul>
 <button id='delete-gathering' {{action 'delete' model}}>Delete</button>
 <hr>
-{{add-attendee}}
+  {{add-attendee attendeeName=attendee.name eventGroups=model.groups triggerSaveAttendee=(action 'saveAttendee')}}
+<hr>
+  {{add-group groupName=group.name eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup')}}
+<hr>
+  {{add-expense expense=expense triggerSaveExpense=(action 'saveExpense')}}
 <hr>
 {{outlet}}
