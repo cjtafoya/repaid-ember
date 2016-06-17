@@ -1,59 +1,139 @@
-Gathering
-<ul>
-  <li><h4>Name: <small>{{model.name}}</small></h4></li>
-  <li>Tagline: {{model.tagline}}</li>
-  <li>Attendees:
-    <ul>
-      {{#each model.attendees as |att|}}
-      <li>{{att.name}}({{att.id}})</li>
-      {{#if att.expenses}}
-        <ul>
-          <li>Expenses: </li>
-          <ul>
-            {{#each att.expenses as |exp|}}
-            <li>{{exp.name}} - ${{exp.amount}}</li>
-            {{/each}}
-          </ul>
-        </ul>
-      {{/if}}
-      {{/each}}
-    </ul>
-  </li>
-  <li>Groups:
-    <ul>
-      {{#each model.groups as |grp|}}
-      <li>{{grp.name}}({{grp.id}})</li>
-      {{#if grp.attendees}}
-        <ul>
-          <li>Group Members: </li>
-          <ul>
-            {{#each grp.attendees as |grpatt|}}
-            <li>{{grpatt.name}}({{grpatt.id}})</li>
-            {{/each}}
-          </ul>
-        </ul>
-      {{/if}}
-      {{#if grp.expenses}}
-        <ul>
-          <li>Expenses: </li>
-          <ul>
-            {{#each grp.expenses as |exp|}}
-            <li>{{exp.name}} - ${{exp.amount}}</li>
-            {{/each}}
-          </ul>
-        </ul>
-      {{/if}}
-      {{/each}}
-    </ul>
-  </li>
+{{!-- Page title --}}
+<div class="row">
+  <div class="col-md-12 page-title">
+    <h2>{{model.name}} <small>{{model.tagline}}</small></h2>
+    <hr>  
+  </div>
+</div>
 
-</ul>
-<button id='delete-gathering' {{action 'delete' model}}>Delete</button>
-<hr>
-  {{add-attendee attendee=attendee eventGroups=model.groups triggerSaveAttendee=(action 'saveAttendee')}}
-<hr>
-  {{add-group group=group eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup')}}
-<hr>
-  {{add-expense expense=expense eventAttendees=model.attendees eventGroups=model.groups triggerSaveExpense=(action 'saveExpense')}}
-<hr>
-{{outlet}}
+{{!-- Page body --}}
+<div class="well">
+
+  {{!-- Summary panels --}}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary col-md-4">
+        <h4>Total expenses</h4>
+        <h1>$5,574</h1>
+      </div>
+      <div class="panel panel-primary col-md-4">
+        <h4>My share</h4>
+        <h1>$475</h1>
+      </div>
+      <div class="panel panel-primary col-md-4">
+        <h4>Balance due</h4>
+        <h1>$30</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {{!-- Expenses section --}}
+    <div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <span class="pull-right">
+            <button {{action 'addExpense'}} class="btn btn-warning">+Expense</button>
+          </span>
+          <h4>Expenses</h4>  
+        </div>
+        <div class="panel-body">
+          {{#if addNewExpense}}
+          <div class="col-md-12">
+            <div class="well clearfix">
+              {{add-expense expense=expense attendees=model.attendees groups=model.groups triggerSaveExpense=(action 'saveExpense')}}
+              {{!-- {{add-expense expense=expense eventAttendees=model.attendees eventGroups=model.groups triggerSaveExpense=(action 'saveExpense')}} --}}
+            </div>
+          </div>
+          {{/if}}
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Financier</th>
+                <th>Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each model.expenses as |expense|}}
+              <tr>
+                <th>{{expense.name}}</th>
+                <th>{{expense.amount}}</th>
+                <th>{{expense.attendee}}</th>
+                <th>{{expense.group}}</th>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Attendee section --}}
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <span class="pull-right">
+            <button {{action 'addAttendee'}} class="btn btn-warning">+Attendee</button>
+          </span>
+          <h4>Attendees</h4>  
+        </div>
+        <div class="panel-body">
+          {{#if addNewAttendee}}
+          <div class="well clearfix">
+            {{add-attendee attendee=attendee groups=model.groups triggerSaveAttendee=(action 'saveAttendee') triggerCancel=(action 'addAttendee')}}
+          </div>
+          {{/if}}
+          <div class="list-group">
+            {{#each model.attendees as |att|}}
+            <div class="list-grou-item">{{att.name}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{#each model.groups as |grp|}}
+  {{grp.name}}({{grp.id}})
+  {{#if grp.attendees}}
+
+  Group Members: 
+
+  {{#each grp.attendees as |grpatt|}}
+  {{grpatt.name}}({{grpatt.id}})
+  {{/each}}
+
+
+  {{/if}}
+  {{#if grp.expenses}}
+
+  Expenses: 
+
+  {{#each grp.expenses as |exp|}}
+  {{exp.name}} - ${{exp.amount}}
+  {{/each}}
+
+
+  {{/if}}
+  {{/each}}
+
+
+
+  <hr>
+
+  <hr>
+
+    {{add-group group=group eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup')}}
+
+  <hr>
+
+  <hr>
+  {{outlet}}
+
+
+  <button id='delete-gathering' {{action 'delete' model}}>Delete Gathering</button>
+</div>

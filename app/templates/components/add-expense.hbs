@@ -1,20 +1,30 @@
-{{yield}}
-{{yield}}
-{{#if addNewExpense}}
+<div class="form-inline">  
+  {{input value=expense.name id='expenseName' class="form-control" placeholder="Item Name"}}
+  
+  <div class="input-group">
+    <div class="input-group-addon">$</div>
+    {{input value=expense.amount id='expenseAmount' class="form-control" placeholder="0.00"}}
+  </div>
+  
+  
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendee <span class="caret"></span></button>
+      {{multiselect-checkboxes options=attendees onchange=(action 'updateBuyer') labelProperty='name' class="dropdown-menu"}}
+    </div>
+    {{#if addNewAttendee}}
+    <input type="text" class="form-control" aria-label="...">
+    {{/if}}
+  </div>
 
-  <label for="name">Expense Name: </label>
-  {{input value=expense.name id='expenseName'}}
-  <label for="amount">Expense Amount: </label>
-  {{input value=expense.amount id='expenseAmount'}}
-  <br>
-  <label for="group">Expense Group: </label>
-  {{multiselect-checkboxes options=eventGroups onchange=(action 'updateGroup') labelProperty='name'}}
-  <label for="buyer">Buyer: </label>
-  {{multiselect-checkboxes options=eventAttendees onchange=(action 'updateBuyer') labelProperty='name'}}
-  <button {{action 'saveExpense'}}>Save</button>
-
-{{else}}
-
-  <button {{action 'addExpense'}}>Add New Expense</button>
-
-{{/if}}
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Group <span class="caret"></span></button>
+      {{multiselect-checkboxes options=groups onchange=(action 'updateGroup') labelProperty='name' class="dropdown-menu"}}
+    </div>
+    {{#if addNewGroup}}
+    <input type="text" class="form-control" aria-label="...">
+    {{/if}}
+  </div>
+  <button {{action 'saveExpense'}} class="btn btn-info">Save Expense!</button>
+</div>

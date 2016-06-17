@@ -1,13 +1,10 @@
-{{yield}}
-{{#if addNewAttendee}}
-<form {{action 'saveAttendee' on='submit'}}>
-  <label for="name">Attendee Name: </label>
-  {{input value=attendee.name id='attendeeName'}}
-  {{multiselect-checkboxes options=eventGroups onchange=(action 'updateSelection') labelProperty='name'}}
-  <button type='submit'>Save</button>
-</form>
-{{else}}
+<div class="col-md-12">
+    {{input value=attendeeName id='attendeeName' placeholder="Attendee Name" class="form-control"}}
+  <h5>Select Groups (optional): </h5>
 
-  <button {{action 'addAttendee'}}>Add New Attendee</button>
+  {{multiselect-checkboxes options=eventGroups onchange=(action 'updateSelection') labelProperty='name' class="checkbox" tagName='div'}}
 
-{{/if}}
+  <br>
+  <button {{action 'saveAttendee'}} class="btn btn-info">Add Attendee!</button>
+  <p {{action 'cancelAdd'}}>Cancel</p>
+</div>  
