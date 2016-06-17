@@ -4,14 +4,14 @@ export default Ember.Component.extend({
   addNewAttendee: false,
   actions: {
     addAttendee: function(){
-      this.toggleProperty('addNewAttendee')
+      this.toggleProperty('addNewAttendee');
     },
     saveAttendee: function(){
-      this.attrs.triggerSaveAttendee(this.get('cbGroups'))
-      this.toggleProperty('addNewAttendee')
+      this.attrs.triggerSaveAttendee()
+      this.toggleProperty('addNewAttendee');
     },
     updateSelection: function(newSelection, value, operation){
-      this.set('attendee.groups', newSelection)
+      this.set('attendee.groups', newSelection);
     }
   }
 });
