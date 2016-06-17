@@ -4,12 +4,14 @@ export default Ember.Component.extend({
   addNewGroup: false,
   actions: {
     addGroup: function(){
-      this.toggleProperty('addNewGroup')
+      this.toggleProperty('addNewGroup');
     },
     saveGroup: function(){
-      debugger
-      this.attrs.triggerSaveGroup(this.getProperties(['name']))
-      this.toggleProperty('addNewGroup')
+      this.attrs.triggerSaveGroup();
+      this.toggleProperty('addNewGroup');
+    },
+    updateSelection: function(newSelection, value, operation){
+      this.set('group.attendees', newSelection);
     }
   }
 });
