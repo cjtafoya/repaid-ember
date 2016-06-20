@@ -14,7 +14,7 @@
     <div class="col-md-12">
       <div class="panel panel-primary col-md-4">
         <h4>Total expenses</h4>
-        <h1>${{totalDue}}</h1>
+        <h1>${{totalDueNaNCheck}}</h1>
       </div>
       <div class="panel panel-primary col-md-4">
         <h4>My share</h4>
@@ -46,7 +46,7 @@
           </div>
           {{/if}}
 
-          {{show-expenses attendees=model.attendees totalDue=totalDue}}
+          {{show-expenses attendees=model.attendees totalDue=totalDueNaNCheck}}
 
         </div>
       </div>
@@ -68,7 +68,11 @@
           {{/if}}
           <div class="list-group">
             {{#each model.attendees as |att|}}
-            <div class="list-group-item">{{att.name}}</div>
+              {{#if editCurrentAttendee}}
+                {{edit-attendee att=att triggerEditAttendee=(action 'editAttendee')}}
+              {{else}}
+                <div class="list-group-item"{{action 'editAttendeeToggle'}}>{{att.name}}</div>
+              {{/if}}
             {{/each}}
           </div>
         </div>
