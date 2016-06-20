@@ -9,6 +9,9 @@ export default Ember.Component.extend({
     },
     updateSelection: function(newSelection, value, operation){
       this.set('group.attendees', newSelection);
+    },
+    cancelAdd: function(){
+      this.triggerCancel()
     }
   }
 });
