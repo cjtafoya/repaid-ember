@@ -4,13 +4,12 @@ export default Ember.Component.extend({
   actions: {
     saveExpense: function(){
       this.attrs.triggerSaveExpense();
-      this.toggleProperty('addNewExpense');
     },
-    updateGroup: function(newSelection, value, operation){
-      this.set('expense.group', newSelection[0])
+    selectAttendee: function(value, component){
+      this.set('expense.attendee', value)
     },
-    updateBuyer: function(newSelection, value, operation){
-      this.set('expense.attendee', newSelection[0])
+    selectGroup: function(value, component){
+      this.set('expense.group', value)
     }
   }
 });

@@ -1,0 +1,30 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+      <th>Financier</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each attendees as |attendee|}}
+    {{#each attendee.expenses as |expense|}}
+    <tr>
+      <td>{{expense.name}}</td>
+      <td>${{expense.amount}}</td>
+      <td>{{expense.attendee.name}}</td>
+      <td>{{expense.group.name}}</td>
+    </tr>
+    {{/each}}
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><b>Total</b></td>
+      <td><b>$</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>

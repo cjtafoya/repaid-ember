@@ -5,6 +5,9 @@
   {{multiselect-checkboxes options=groups onchange=(action 'updateSelection') labelProperty='name' class="checkbox" tagName='div'}}
 
   <br>
+  <div class="text-center">
   <button {{action 'saveAttendee'}} class="btn btn-info">Add Attendee!</button>
+  <br>  <br>  
   <p {{action 'cancelAdd'}}>Cancel</p>
+  </div>
 </div>
