@@ -10,11 +10,16 @@ export default Ember.Controller.extend({
   expense: Ember.computed('expense.id',function(){
     return this.store.createRecord('expense');
   }),
-  
   expenses: Ember.computed.alias('model.expenses'),
   amounts: Ember.computed.mapBy('expenses', 'amount'),
   totalDue: Ember.computed.sum('amounts'),
-
+  totalDueNaNCheck: Ember.computed('totalDue', function(totalDue){
+    if(this.get('totalDue') == 0){
+      return "0"
+    }else{
+      return Math.round(this.get('totalDue'))
+    }
+  }),
   actions: {
     saveExpense: function(properties) {
       this.get('expense').set('gathering', this.get('model'))
@@ -33,6 +38,10 @@ export default Ember.Controller.extend({
       this.get('group').save();
       this.toggleProperty('addNewGroup');
     },
+    editAttendee: function(att){
+      att.save()
+      this.toggleProperty('editCurrentAttendee')
+    },
     addExpense: function(){
       this.toggleProperty('addNewExpense')
     },
@@ -41,6 +50,9 @@ export default Ember.Controller.extend({
     },
     addGroup: function(){
       this.toggleProperty('addNewGroup');
+    },
+    editAttendeeToggle: function(){
+      this.toggleProperty('editCurrentAttendee')
     }
   }
 });
