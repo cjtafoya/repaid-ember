@@ -3,20 +3,29 @@
   <h4>My Gatherings</h4>
 </div>
 
+{{#if model}}
 <div>
   {{#each model as |g|}}
-    <div>
+  <div>
     <h3><small></small>{{#link-to 'gatherings.gathering' g}}{{g.name}}{{/link-to}}</h3>
     <h4>{{g.tagline}}</h4>
     <h4><small>Attendees: </small></h4>
-      <ul>
-        {{#each g.attendees as |att|}}
-        <li>{{att.name}}</li>
-        {{/each}}
-      </ul>
-    </div>
-    <hr>
+    <ul>
+      {{#each g.attendees as |att|}}
+      <li>{{att.name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <hr>
   {{/each}}
 </div>
+{{else}}
+<div>
+  {{link-to "Create a new gathering to get started!" 'gatherings.new'}}
+</div>
+{{/if}}
+
+
+
 
 {{outlet}}

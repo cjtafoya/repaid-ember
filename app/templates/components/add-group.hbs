@@ -1,4 +1,13 @@
-  <label for="name">Group Name: </label>
-  {{input value=group.name id='groupName'}}
+<div class="well">
+  {{input value=group.name id='groupName' placeholder="Group Name" class="form-control"}}
+
+  <h5>Select Attendees (optional): </h5>
   {{multiselect-checkboxes options=eventAttendees onchange=(action 'updateSelection') labelProperty='name'}}
-  <button {{action 'saveGroup'}}>Save</button>
+  <br>
+
+  <div class="text-center">
+    <button {{action 'saveGroup'}} class="btn btn-info">Create Group</button>
+    <br><br>
+    <p {{action 'cancelAdd'}}>Cancel</p>
+  </div>
+</div>
