@@ -2,8 +2,9 @@
     {{input value=attendee.name id='attendeeName' placeholder="Attendee Name" class="form-control"}}
   <h5>Select Groups (optional): </h5>
 
-  {{multiselect-checkboxes options=groups onchange=(action 'updateSelection') labelProperty='name' class="checkbox" tagName='div'}}
-
+  {{#multiselect-checkboxes options=groups selection=selectedGroups onchange=(action 'updateSelection') class="checkbox" tagName='div' as |group isSelected|}}
+    <div class="checkbox" checked=isSelected>{{input type='checkbox' checked=isSelected}}:{{group.name}}</div>
+  {{/multiselect-checkboxes}}
   <br>
   <button {{action 'saveAttendee'}} class="btn btn-info">Add Attendee!</button>
   <p {{action 'cancelAdd'}}>Cancel</p>

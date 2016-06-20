@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12 page-title">
     <h2>{{model.name}} <small>{{model.tagline}}</small></h2>
-    <hr>  
+    <hr>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
           <span class="pull-right">
             <button {{action 'addExpense'}} class="btn btn-warning">+Expense</button>
           </span>
-          <h4>Expenses</h4>  
+          <h4>Expenses</h4>
         </div>
         <div class="panel-body">
           {{#if addNewExpense}}
@@ -61,8 +61,8 @@
               <tr>
                 <th>{{expense.name}}</th>
                 <th>{{expense.amount}}</th>
-                <th>{{expense.attendee}}</th>
-                <th>{{expense.group}}</th>
+                <th>{{expense.attendee.name}}</th>
+                <th>{{expense.group.name}}</th>
               </tr>
               {{/each}}
             </tbody>
@@ -78,7 +78,7 @@
           <span class="pull-right">
             <button {{action 'addAttendee'}} class="btn btn-warning">+Attendee</button>
           </span>
-          <h4>Attendees</h4>  
+          <h4>Attendees</h4>
         </div>
         <div class="panel-body">
           {{#if addNewAttendee}}
@@ -101,7 +101,7 @@
   {{grp.name}}({{grp.id}})
   {{#if grp.attendees}}
 
-  Group Members: 
+  Group Members:
 
   {{#each grp.attendees as |grpatt|}}
   {{grpatt.name}}({{grpatt.id}})
@@ -111,7 +111,7 @@
   {{/if}}
   {{#if grp.expenses}}
 
-  Expenses: 
+  Expenses:
 
   {{#each grp.expenses as |exp|}}
   {{exp.name}} - ${{exp.amount}}
