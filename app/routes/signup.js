@@ -6,7 +6,6 @@ export default Ember.Route.extend({
   },
   actions: {
     signup(model) {
-      debugger
       model.save().then(this.transitionTo('login'));
     }
   }
