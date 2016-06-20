@@ -11,7 +11,6 @@ export default Ember.Controller.extend({
         var credentials = this.getProperties('model.email', 'model.password');
         var creds = {identification: this.get('model.email'), password: this.get('model.password')}
         var authenticator = 'authenticator:jwt';
-        debugger
         this.get('session').authenticate(authenticator,
           creds).catch((reason)=>{
           this.set('errorMessage', reason.error || reason);

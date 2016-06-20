@@ -12,7 +12,6 @@ export default Ember.Component.extend({
       this.attrs.triggerSaveAttendee()
     },
     updateSelection: function(newSelection, value, operation){
-      debugger
       this.set('attendee.groups', newSelection);
     }
   }
