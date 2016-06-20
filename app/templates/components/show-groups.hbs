@@ -1,0 +1,21 @@
+{{#each groups as |group|}}     
+<div class="alert alert-info">
+  <div class="clearfix">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4>{{group.name}}</h4>
+    <hr>
+  </div>
+
+  {{#if group.attendees}}
+  {{#each group.attendees as |attendee|}}
+  {{attendee.name}}
+  {{/each}}
+  {{/if}}
+
+  {{#if group.expenses}}
+  {{#each group.expenses as |exp|}}
+  {{exp.name}} - ${{exp.amount}}
+  {{/each}}
+  {{/if}}
+</div>
+{{/each}}

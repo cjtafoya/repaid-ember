@@ -1,13 +1,4 @@
-{{yield}}
-{{#if addNewGroup}}
-
   <label for="name">Group Name: </label>
   {{input value=group.name id='groupName'}}
   {{multiselect-checkboxes options=eventAttendees onchange=(action 'updateSelection') labelProperty='name'}}
   <button {{action 'saveGroup'}}>Save</button>
-
-{{else}}
-
-  <button {{action 'addGroup'}}>Add New Group</button>
-
-{{/if}}

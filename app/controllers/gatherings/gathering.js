@@ -10,7 +10,19 @@ export default Ember.Controller.extend({
   expense: Ember.computed('expense.id',function(){
     return this.store.createRecord('expense');
   }),
+  
+  expenses: Ember.computed.alias('model.expenses'),
+  amounts: Ember.computed.mapBy('expenses', 'amount'),
+  totalDue: Ember.computed.sum('amounts'),
+
   actions: {
+    saveExpense: function(properties) {
+      this.get('expense').set('gathering', this.get('model'))
+      this.get('expense').save().then((expense) =>{
+        this.get('model.expenses').pushObject(expense)
+        this.toggleProperty('addNewExpense');
+      })
+    },
     saveAttendee: function(properties) {
       this.get('attendee').set('gathering', this.get('model'))
       this.get('attendee').save();
@@ -19,16 +31,16 @@ export default Ember.Controller.extend({
     saveGroup: function(properties) {
       this.get('group').set('gathering', this.get('model'))
       this.get('group').save();
-    },
-    saveExpense: function(properties) {
-      this.get('expense').set('gathering', this.get('model'))
-      this.get('expense').save();
+      this.toggleProperty('addNewGroup');
     },
     addExpense: function(){
       this.toggleProperty('addNewExpense')
     },
     addAttendee: function(){
       this.toggleProperty('addNewAttendee')
+    },
+    addGroup: function(){
+      this.toggleProperty('addNewGroup');
     }
   }
 });
