@@ -1,11 +1,25 @@
-<form {{action 'signup' model on='submit'}}>
-  <label for="username">Username</label>
-  {{input id='username' value=model.username}}
-  <label for="email">Email</label>
-  {{input id='email' value=model.email}}
-  <label for="password">Password</label>
-  {{input type='password' id='password' value=model.password}}
-  <label for="password">Password Cofirmation</label>
-  {{input type='password' id='passwordConfirmation' value=model.passwordConfirmation}}
-  <button type="submit">Sign Up!</button>
- </form>
+<div class="col-md-6 col-md-offset-3">
+  <h1>Sign Up <small>and get your fair share</small></h1>
+  <hr>
+  <div class="well">
+    <form {{action 'signup' model on='submit'}}>
+      <div class="form-group">
+        <label for="username">Username</label>
+        {{input id='username' value=model.username class="form-control"}}
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        {{input id='email' value=model.email class="form-control"}}
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        {{input type='password' id='password' value=model.password class="form-control"}}
+      </div>
+      <div class="form-group">
+        <label for="password">Password Confirmation</label>
+        {{input type='password' id='passwordConfirmation' value=model.passwordConfirmation class="form-control"}}
+      </div>
+      <button type="submit" class="btn btn-danger">Sign Up!</button>
+    </form>
+  </div>
+</div>
