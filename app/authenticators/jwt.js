@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
-
+import config from '../config/environment';
 const { RSVP: { Promise }, $: { ajax }, run } = Ember;
 
 
 export default Base.extend({
-  tokenEndpoint: 'http://localhost:3000/login',
+  tokenEndpoint: `${config.host}/login`,
 
   restore(data) {
     return new Promise((resolve, reject) => {
