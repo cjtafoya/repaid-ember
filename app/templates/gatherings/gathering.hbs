@@ -103,7 +103,7 @@
           {{add-group group=group eventAttendees=model.attendees triggerSaveGroup=(action 'saveGroup') triggerCancel=(action 'addGroup')}}
           {{/if}}
 
-          {{show-groups groups=model.groups}}
+          {{show-groups groups=model.groups model=model triggerEditGroup=(action 'editGroup') }}
         </div>
       </div>
     </div>
