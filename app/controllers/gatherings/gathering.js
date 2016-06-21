@@ -38,6 +38,9 @@ export default Ember.Controller.extend({
       this.get('group').save();
       this.toggleProperty('addNewGroup');
     },
+    editGroup: function(grp) {
+      grp.save();
+    },
     editAttendee: function(att){
       att.save()
       this.toggleProperty('editCurrentAttendee')
