@@ -1,9 +1,23 @@
 {{!-- Page title --}}
 <div class="row">
   <div class="col-md-12 page-title">
-    <h2>{{model.name}} <small>{{model.tagline}}</small></h2>
-    <hr>
-  </div>
+    <h2><span class="pull-right clearfix">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-cog"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li{{action 'delete' model}}><a href="#">Delete Gathering</a></li>
+        </ul>
+      </div>
+    </span></h2>
+  <h2>{{model.name}} <small>{{model.tagline}}</small></h2>
+  <hr>
+</div>
 </div>
 
 {{!-- Page body --}}
@@ -64,15 +78,15 @@
         </div>
         <div class="panel-body">
           {{#if addNewAttendee}}
-            {{add-attendee attendee=attendee groups=model.groups triggerSaveAttendee=(action 'saveAttendee') triggerCancel=(action 'addAttendee')}}
+          {{add-attendee attendee=attendee groups=model.groups triggerSaveAttendee=(action 'saveAttendee') triggerCancel=(action 'addAttendee')}}
           {{/if}}
           <div class="list-group">
             {{#each model.attendees as |att|}}
-              {{#if editCurrentAttendee}}
-                {{edit-attendee att=att triggerEditAttendee=(action 'editAttendee')}}
-              {{else}}
-                <div class="list-group-item"{{action 'editAttendeeToggle'}}>{{att.name}}</div>
-              {{/if}}
+            {{#if editCurrentAttendee}}
+            {{edit-attendee att=att triggerEditAttendee=(action 'editAttendee')}}
+            {{else}}
+            <div class="list-group-item"{{action 'editAttendeeToggle'}}>{{att.name}}</div>
+            {{/if}}
             {{/each}}
           </div>
         </div>
@@ -108,8 +122,4 @@
       </div>
     </div>
   </div>
-
 </div>
-
-<hr>
-<button id='delete-gathering' {{action 'delete' model}} class="btn btn-danger">Delete Gathering</button>

@@ -9,12 +9,9 @@
   <div>
     <h3><small></small>{{#link-to 'gatherings.gathering' g}}{{g.name}}{{/link-to}}</h3>
     <h4>{{g.tagline}}</h4>
-    <h4><small>Attendees: </small></h4>
-    <ul>
       {{#each g.attendees as |att|}}
-      <li>{{att.name}}</li>
+      <div class="badge">{{att.name}}</div>
       {{/each}}
-    </ul>
   </div>
   <hr>
   {{/each}}
