@@ -4,24 +4,17 @@
       <th>Attendee</th>
       <th>Amount Due</th>
       <th>Expenses</th>
-      <th>Paid</th>
       <th>Balance</th>
-      <th>Reimbursements</th>
-      <th>Remaining</th>
     </tr>
   </thead>
   <tbody>
     {{#each model.attendees as |attendee|}}
     <tr>
       <td>{{attendee.name}}</td>
-      <td></td>
-      <td>{{attendee.userExpenses}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{attendee.amount_due}}</td>
+      <td>{{attendee.total_expenses}}</td>
+      <td>{{attendee.balance}}</td>
     </tr>
     {{/each}}
   </tbody>
-
 </table>
