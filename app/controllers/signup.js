@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
   actions: {
     signup(model) {
       model.save().then((user)=>{
-        var credentials = this.getProperties('model.email', 'model.password');
         var creds = {identification: this.get('model.email'), password: this.get('model.password')}
         var authenticator = 'authenticator:jwt';
         this.get('session').authenticate(authenticator,
