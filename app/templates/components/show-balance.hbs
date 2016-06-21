@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <th>Attendee</th>
-      <th>Amount Due</th>
+      <th>Share</th>
       <th>Expenses</th>
-      <th>Balance</th>
+      <th>Owes $</th>
     </tr>
   </thead>
   <tbody>
@@ -17,4 +17,12 @@
     </tr>
     {{/each}}
   </tbody>
+  <tfoot>
+    <tr>
+      <td><b>Total</b></td>
+      <td><b>${{totalDue}}</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
 </table>

@@ -8,14 +8,14 @@
   
 
   {{#x-select action='selectAttendee' id='attendee-select' value=model.attendee default="Attendee" class="btn btn-default dropdown-toggle"}}
-    <option>Select Attendee</option>
+    <option>Who Paid?</option>
     {{#each attendees as |attendee|}}
     {{#x-option value=attendee}}{{attendee.name}}{{/x-option}}
     {{/each}}
   {{/x-select}}
   
   {{#x-select action='selectGroup' value=model.group default="Group" class="btn btn-default dropdown-toggle"}}
-    <option>Select Group</option>
+    <option>Who Benefitted?</option>
     {{#each groups as |group|}}
     {{#x-option value=group}}{{group.name}}{{/x-option}}
     {{/each}}

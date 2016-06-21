@@ -3,8 +3,8 @@
   <div class="col-md-12 page-title">
     <h2><span class="pull-right clearfix">
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <span class="glyphicon glyphicon-cog"></span>
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Edit
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
           <li><a href="#">Action</a></li>
@@ -101,7 +101,7 @@
           <h4>Balances</h4>
         </div>
         <div class="panel-body">
-          {{show-balance attendees=model.attendees}}
+          {{show-balance attendees=model.attendees totalDue=totalDueNaNCheck}}
         </div>
       </div>
     </div>
