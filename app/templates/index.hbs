@@ -1,11 +1,18 @@
-<div class="jumbotron">
-  <h1>PARTY HARD <small>and get your fair share</small></h1>
-    <br>
-  <p>We make it simple to split expenses and track who-owes-what after the music stops</p>
+<div class="jumbotron clearfix">
+  <div class="row">
+    <div class="overwatch col-md-7">
+      <h1>FAIR SHARE <small>party hard</small></h1>
+        <br>
+      <p> <span style="color: #ffffff">We make it simple</span> to split expenses and track who-owes-what after the music stops</p>
+    </div>
+  </div>
     <br>  
     <br>  
     <br>  
-  <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up!</a>
-  <a class="btn btn-default btn-lg" href="/login" role="button">Log In</a>
+  {{#if session.isAuthenticated}}
+    {{link-to "See my gatherings" 'gatherings' class="btn btn-primary btn-lg"}}
+  {{else}}
+    <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up!</a>
+    <a class="btn btn-default btn-lg" href="/login" role="button">Log In</a>
+  {{/if}}
 </div>
-

@@ -1,9 +1,9 @@
 <div class="well clearfix">
   {{input value=attendee.name id='attendeeName' placeholder="Attendee Name" class="form-control"}}
+  
   <h5>Select Groups (optional): </h5>
-
-  {{#multiselect-checkboxes options=groups selection=selectedGroups onchange=(action 'updateSelection') class="checkbox" tagName='div' as |group isSelected|}}
-  <div class="checkbox">{{input type='checkbox' checked=isSelected}}:{{group.name}}</div>
+  {{#multiselect-checkboxes options=groups selection=selectedGroups onchange=(action 'updateSelection') class="checkbox" as |group isSelected|}}
+  <li class="checkbox"><label>{{input type='checkbox' checked=isSelected}}<b>{{group.name}}</b></label></li>
   {{/multiselect-checkboxes}}
   <br>
 
